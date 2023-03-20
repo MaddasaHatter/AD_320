@@ -1,0 +1,22 @@
+<title>Dog Facts Button</title>
+</head>
+
+<p> Doggo Facts for Doggo Lovers </p>
+<button onclick="getDogFact()" id="dogButton">Press here for Doggo Facts</button>
+
+<div id ="dogText"><p>Doggo facts go here.</p> </div>
+
+
+</html>
+
+<script>
+    async function getDogFact() {
+        const api_endpoint = "https://dog-api.kinduff.com/api/facts?number=1"
+        const response = await fetch(api_endpoint);
+        const json_response = await response.json();
+
+        document.getElementById("dogText").innerHTML = json_response.facts[0];
+        console.log(json_response);
+    }
+
+</script>

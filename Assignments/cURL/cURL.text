@@ -1,0 +1,41 @@
+VmQ4hiy8tNnWewm0TMKM5PCAdIYHg3VKMzo6EnBQvkJHUuIQ3pdEmKD2vgE1wWhu
+data-mbose
+
+curl --location --request POST 'https://us-west-2.aws.data.mongodb-api.com/app/data-mbose/endpoint/data/v1/action/findOne' \
+--header 'Content-Type: application/json' \
+--header 'Access-Control-Request-Headers: *' \
+--header 'api-key: VmQ4hiy8tNnWewm0TMKM5PCAdIYHg3VKMzo6EnBQvkJHUuIQ3pdEmKD2vgE1wWhu' \
+--data-raw '{
+    "collection":"listingsAndReviews",
+    "database":"sample_airbnb",
+    "dataSource":"Cluster0",
+    "projection": {
+        "_id": 1,
+        "listing_url":1,
+        "name":1,
+        "summary":1,
+        "property_type":1,
+        "cancellation_policy":1
+        },
+        "filter": {
+            "property_type": "Apartment"
+        }
+}'
+
+
+
+
+curl --request POST \
+  'https://data.mongodb-api.com/app/data-mbose/endpoint/data/v1/action/find' \
+  --header 'Content-Type: application/json' \
+  --header 'api-key: <Data API Key>' \
+  --data-raw '{
+      "dataSource": "Cluster0",
+      "database": "todo",
+      "collection": "tasks",
+      "filter": {
+        "status": "complete"
+      },
+      "sort": { "completedAt": 1 },
+      "limit": 10
+  }'

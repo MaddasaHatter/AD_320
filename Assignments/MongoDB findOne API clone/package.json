@@ -1,0 +1,13 @@
+{
+  "name": "mongodb-clone",
+  "version": "1.0.0",
+  "description": "An application to clone a MongoDB database",
+  "main": "MongoDBClone.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^4.4.2"
+  },
+  "scripts": {
+    "start": "node MongoDBClone.js"
+  }
+}
