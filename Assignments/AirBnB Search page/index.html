@@ -33,7 +33,7 @@
         const formData = new FormData(form);
 
         const params = new URLSearchParams(formData).toString();
-        const url = `/findOne?${params}`;
+        const url = `http://localhost:3000/findOne?${params}`;
 
         fetch(url)
           .then(response => response.json())

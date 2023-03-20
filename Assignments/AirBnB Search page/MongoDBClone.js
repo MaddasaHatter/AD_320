@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 
 // Set up a MongoDB connection
-const uri = 'mongodb+srv://LilithC:WhiteRabbit69@cluster0.oj49duw.mongodb.net/test';
+const uri = 'mongodb+srv://LilithC:WhiteRabbit69@cluster0.oj49duw.mongodb.net/test?retryWrites=true&w=majority';
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Wrap server startup in client.connect() callback
