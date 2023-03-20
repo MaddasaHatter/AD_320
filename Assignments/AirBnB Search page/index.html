@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Find Airbnb Listing</title>
+  </head>
+  <body>
+    <form id="search-form">
+      <div>
+        <label for="property-type">Property Type:</label>
+        <input type="text" id="property-type" name="property_type">
+      </div>
+      <div>
+        <label for="bedrooms">Bedrooms:</label>
+        <input type="number" id="bedrooms" name="bedrooms">
+      </div>
+      <div>
+        <label for="beds">Beds:</label>
+        <input type="number" id="beds" name="beds">
+      </div>
+      <button type="submit">Search</button>
+    </form>
+
+    <ul id="results"></ul>
+
+    <script>
+      const form = document.querySelector('#search-form');
+      const results = document.querySelector('#results');
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+
+        const params = new URLSearchParams(formData).toString();
+        const url = `/findOne?${params}`;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+              <p><strong>Listing URL:</strong> ${data.listing_url}</p>
+              <p><strong>Name:</strong> ${data.name}</p>
+              <p><strong>Summary:</strong> ${data.summary}</p>
+              <p><strong>Property Type:</strong> ${data.property_type}</p>
+              <p><strong>Bedrooms:</strong> ${data.bedrooms}</p>
+              <p><strong>Beds:</strong> ${data.beds}</p>
+            `;
+            results.innerHTML = '';
+            results.appendChild(li);
+          })
+          .catch(error => console.error(error));
+      });
+    </script>
+  </body>
+</html>
